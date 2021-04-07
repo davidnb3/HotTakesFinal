@@ -32,9 +32,7 @@ exports.createSauce = (req, res, next) => {
         imageUrl: url + '/images/' + req.file.filename,
         heat: req.body.sauce.heat,
         likes: req.body.sauce.likes,
-        dislikes: req.body.sauce.dislikes,
-        usersLiked: req.body.sauce.usersLiked,
-        usersDisliked: req.body.sauce.usersDisliked
+        dislikes: req.body.sauce.dislikes
     });
     sauce.save().then(() => {
         res.status(201).json({message: 'Sauce added successfully!'});
@@ -120,7 +118,7 @@ exports.setLikeStatus = (req, res, next) => {
                 res.status(400).json({error: error});
             });
         } else {
-            res.status(400).json({error: error});
+            res.status(400).send(new Error('Bad Request.'));
         };
     }).catch((error) => {
         res.status(400).json({error: error});
