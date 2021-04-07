@@ -108,7 +108,7 @@ exports.setLikeStatus = (req, res, next) => {
         if (sauce.usersDisliked === null) {
             sauce.usersDisliked = [];
         }
-        // Validate here, if fail return 400
+    
         checkLikeStatus(req, sauce, userId);
 
         if (req.body.like === 1 || req.body.like === -1 || req.body.like === 0) {
