@@ -7,7 +7,6 @@ const mimeTypes = {
     'image/png': 'png',
 };
 
-// Add filesize limit
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
