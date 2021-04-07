@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
+const fs = require('fs')
+const imageDir = './images';
 
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
@@ -25,6 +27,10 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
+
+if (!fs.existsSync(imageDir)) {
+    fs.mkdirSync(imageDir);
+};
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
