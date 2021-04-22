@@ -10,6 +10,7 @@ const sauceRoutes = require('./routes/sauce');
 
 const app = express();
 
+// Connects to MongoDB database
 mongoose.connect('mongodb+srv://AppUser:hsKZg7I1KhQqLxxT@sopeckoko.v7tlb.mongodb.net/test?retryWrites=true&w=majority')
     .then(() => {
         console.log('Succesfully connected to MongoDB Atlas!');
@@ -17,8 +18,9 @@ mongoose.connect('mongodb+srv://AppUser:hsKZg7I1KhQqLxxT@sopeckoko.v7tlb.mongodb
     .catch((error) => {
         console.log('Unable to connect to MongoDB Atlas.');
         console.error(error);
-    })
+    });
 
+// Set which headers and methods are allowed
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -28,6 +30,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
+// Create image folder when running up server
 if (!fs.existsSync(imageDir)) {
     fs.mkdirSync(imageDir);
 };
