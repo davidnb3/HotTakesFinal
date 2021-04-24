@@ -31,7 +31,7 @@ exports.login = (req, res, next) => {
             if (!valid) {
                 return res.status(401).json({error: new Error('Incorrect password!')});
             }
-            // User gets authentification token
+            // User gets authetication token
             const token = jwt.sign({userId: user._id}, '2BF529A61E9CB4EA9EF5AA6B28DE3AC488AC88593FB5DCB0F182067C4ACBC6FA', {expiresIn: '24h'});
             res.status(200).json({
                 userId: user._id,

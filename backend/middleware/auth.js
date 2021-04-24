@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
-    // Checks authentification token before any request made to server
+    // Checks authentication token before any request made to server
     try {
         const token = req.headers.authorization.split(' ')[1];
         const decodedToken = jwt.verify(token, '2BF529A61E9CB4EA9EF5AA6B28DE3AC488AC88593FB5DCB0F182067C4ACBC6FA');
