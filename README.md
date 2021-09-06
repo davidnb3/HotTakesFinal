@@ -1,5 +1,7 @@
 # HOT TAKES #
 
+Project consisted of building the backend API for a sauce review website with basic CRUD operations.
+
 ## Installation ##
 Clone this repo, run `npm install` in both folders.
 
